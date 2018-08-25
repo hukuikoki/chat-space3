@@ -1,24 +1,43 @@
-# README
+# データベース設計
+## User
+|column|type  |
+|:-----|:-----|
+|name  |string|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### アソシエーション
+has\_many :messages
 
-Things you may want to cover:
+has\_and\_belongs\_to\_many :groups
 
-* Ruby version
+## Group
+|column|type  |
+|:-----|:-----|
+|name  |string|
 
-* System dependencies
+### アソシエーション
+has\_many :massages
 
-* Configuration
+has\_and\_belongs\_to\_many :users
 
-* Database creation
+## Group\_Users
+|column   |type      |
+|:--------|:---------|
+|user\_id |references|
+|group\_id|references|
 
-* Database initialization
+### Massage
+|column   |type      |
+|:--------|:---------|
+|body     |text      |
+|image    |string    |
+|user\_id |references|
+|group\_id|references|
 
-* How to run the test suite
+### アソシエーション
+belongs\_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+belongs\_to :group
 
-* Deployment instructions
 
-* ...
+
+
